@@ -33,15 +33,25 @@ public class NoticeController {
 	
 
 	@GetMapping("")
-	public Page<NoticeVO> list(@PageableDefault(sort = "baordNum", direction = Sort.Direction.DESC) Pageable pageable) throws Exception {
+	public Page<NoticeVO> list(@PageableDefault(sort = "boardNum", direction = Sort.Direction.DESC) Pageable pageable) throws Exception {
 		return noticeService.list(pageable);
 	}
 	
 	@GetMapping("{boardNum}")
 	public NoticeVO detail(@PathVariable("boardNum") Long boardNum) throws Exception {
 		NoticeVO noticeVO = noticeService.detail(boardNum);
-		System.out.println(noticeVO.getList().get(0).getSaveName());
-		return noticeService.detail(boardNum);
+		return noticeVO;
+	}
+	
+	@PostMapping("")
+	public boolean add(NoticeVO noticeVO) throws Exception {
+		noticeVO = noticeService.add(noticeVO);
+		if(noticeVO != null) {
+			return true;
+		}
+		return false;
+		
+		
 	}
 	
 	

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.winter.app.board.BoardVO;
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-@Transactional
+
 class NoticeRepositoryTest {
 	
 	@Autowired
@@ -55,6 +56,7 @@ class NoticeRepositoryTest {
 	}
 	
 	@Test
+	@Rollback(value = false)
 	void test2() {
 		Optional<NoticeVO> result = noticeRepository.findById(2L);
 		NoticeVO noticeVO = result.get();
