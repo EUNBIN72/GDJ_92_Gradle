@@ -8,6 +8,14 @@ export default function Login() {
         let all = Object.fromEntries(form.entries())
 
         console.log(all)
+
+        fetch("http://localhost/api/member/login", {
+            method:"POST",
+            body:form
+        })
+        .then(r=>r.json())
+        .then(r=>console.log(r))
+        .catch(e=>console.log(e))
     }
 
     return(
