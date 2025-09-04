@@ -1,17 +1,19 @@
-import List from './components/list'
-import StudyEffext from './study/StudyEffect'
-import StudyRef from './study/StudyRef'
-import StudyState from './study/StudyState'
-import Add from './components/Add'
 import Header from './layout/Header'
+import AppRoutes from './route/AppRoutes'
+import StudyProps from './study/StudyProps'
 
 function App() {
+
+  let age = 10;
+  let m = {age:20, user:"iu"}
 
   return (
     <div>
     <Header></Header>
-    <h1>Index Page</h1>
-    <Add></Add>
+    {/* <StudyProps user={m}></StudyProps> */}
+    {/* <StudyProps age="20" user="winter"></StudyProps> */}
+    <StudyProps m={m}></StudyProps>
+    <AppRoutes></AppRoutes>
     
     </div> 
   )

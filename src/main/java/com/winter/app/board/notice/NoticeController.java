@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.PostConstruct;
 
-@RequestMapping("/notice/**")
+@RequestMapping("/api/notice/**")
 @RestController
 @CrossOrigin
 public class NoticeController {
