@@ -23,7 +23,12 @@ function List() {
         // });
     
         useEffect(()=>{
-        fetch(`http://localhost/api/notice?page=${page}`)
+        fetch(`http://localhost/api/notice?page=${page}`, {
+            method : "GET",
+            headers : {
+                Authorization: "Bearer " + sessionStorage.getItem("accesstoken")
+            }
+        })
                     .then(r => r.json())
                     .then(r => {
                         console.log(r)

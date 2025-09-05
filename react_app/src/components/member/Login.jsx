@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+
+    const nav = useNavigate();
 
     function login(e) {
         e.preventDefault();
@@ -13,8 +17,15 @@ export default function Login() {
             method:"POST",
             body:form
         })
-        .then(r=>r.json())
-        .then(r=>console.log(r))
+        // .then(r=>r.json())
+        .then(r=>{
+            const header = r.headers;
+            console.log(header.get("accesstoken"))
+            localStorage.setItem("accesstoken", header.get("Accesstoken"))
+            sessionStorage.setItem("accesstoken", header.get("Accesstoken"))
+            nav("/")
+        })
+            
         .catch(e=>console.log(e))
     }
 
